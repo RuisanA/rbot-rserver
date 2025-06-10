@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server-start": "npx forever start index.js",
+    "server-stop": "npx forever stop index.js",
+    "server-list": "npx forever list"
   },
   "author": "",
   "license": "ISC",
