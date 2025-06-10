@@ -73,6 +73,9 @@ const client = new Client({
   ],
 });
 
+const { serve } = require("@hono/node-server");
+const healthCheckServer = require("./server");
+
 const prefix = "r.";
 
 client.on("ready", (message) => {
@@ -790,6 +793,11 @@ client.on(Events.MessageUpdate, async (before, after) => {
   {
     console.error('ERR >> ', error);
   }
+});
+
+serve({
+  fetch: healthCheckServer.fetch,
+  port: 8000,
 });
 
 client.login(token);
