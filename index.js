@@ -75,6 +75,7 @@ const client = new Client({
 
 const { serve } = require("@hono/node-server");
 const healthCheckServer = require("./server");
+const { startHealthCheckCron } = require("./cron");
 
 const prefix = "r.";
 
@@ -799,5 +800,7 @@ serve({
   fetch: healthCheckServer.fetch,
   port: 8000,
 });
+
+startHealthCheckCron();
 
 client.login(token);
